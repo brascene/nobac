@@ -1,9 +1,19 @@
-import React from "react";
+/**
+ * NoBacco
+ * https://github.com/brascene/nobac/tree/master/nobacco
+ * @flow
+ */
+
+import React, { Component } from "react";
 import t from "tcomb-form-native";
 
 const Form = t.form.Form;
 
-class CreateProfileForm extends React.Component {
+type Props = {};
+
+class CreateProfileForm extends Component<Props> {
+  loginFormRef: ?Object;
+
   render() {
     const username = {
       label: "First name",

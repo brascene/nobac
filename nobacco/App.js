@@ -1,6 +1,6 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
+ * NoBacco
+ * https://github.com/brascene/nobac/tree/master/nobacco
  * @flow
  */
 
@@ -8,7 +8,9 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import CreateProfileForm from "./components/CreateProfileForm";
 
-export default class App extends Component {
+type Props = {};
+
+export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
