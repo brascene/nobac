@@ -6,12 +6,14 @@
 
 import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import CreateProfileForm from "./components/CreateProfileForm";
 
 export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>Welcome to NoBacco!</Text>
+        <CreateProfileForm />
       </View>
     );
   }
