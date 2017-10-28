@@ -40,6 +40,23 @@
     "no-confusing-arrow": 0,
     "react/jsx-filename-extension": 0,
     "no-console": 0,
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "react/forbid-prop-types": [0, { "forbid": [] }],
+    "prefer-destructuring": [
+      "error",
+      {
+        "VariableDeclarator": {
+          "array": false,
+          "object": false
+        },
+        "AssignmentExpression": {
+          "array": true,
+          "object": false
+        }
+      },
+      {
+        "enforceForRenamedProperties": false
+      }
+    ]
   }
 }
