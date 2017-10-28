@@ -5,16 +5,22 @@
  */
 
 import React, { Component } from "react";
+import { View, Button } from "react-native";
 import t from "tcomb-form-native";
 
 const Form = t.form.Form;
 
-type Props = {};
+type Props = {
+  navigation: Object
+};
 
 class CreateProfileForm extends Component<Props> {
+  static navigationOptions = {
+    title: "Welcome to NoBacco"
+  };
   loginFormRef: ?Object;
-
   render() {
+    const { navigate } = this.props.navigation;
     const username = {
       label: "First name",
       maxLength: 12,
@@ -47,11 +53,20 @@ class CreateProfileForm extends Component<Props> {
     };
 
     return (
-      <Form
-        ref={ref => (this.loginFormRef = ref)}
-        type={loginForm}
-        options={options}
-      />
+      <View
+        style={{
+          marginTop: 10,
+          alignItems: "center",
+          justifyContent: "center"
+        }}
+      >
+        <Form
+          ref={ref => (this.loginFormRef = ref)}
+          type={loginForm}
+          options={options}
+        />
+        <Button title="Next" onPress={() => navigate("NextScreen")} />
+      </View>
     );
   }
 }
