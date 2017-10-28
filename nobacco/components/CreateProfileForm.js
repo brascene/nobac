@@ -7,6 +7,7 @@
 import React, { Component } from "react";
 import { View, Button } from "react-native";
 import t from "tcomb-form-native";
+import UserProfileImagePicker from "../components/UserProfileImagePicker";
 
 const Form = t.form.Form;
 
@@ -65,6 +66,7 @@ class CreateProfileForm extends Component<Props> {
           type={loginForm}
           options={options}
         />
+        <UserProfileImagePicker />
         <Button title="Next" onPress={() => navigate("NextScreen")} />
       </View>
     );
