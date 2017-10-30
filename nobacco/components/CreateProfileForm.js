@@ -7,7 +7,9 @@
 import React, { Component } from "react";
 import { View, Button } from "react-native";
 import t from "tcomb-form-native";
+import Realm from "realm";
 import UserProfileImagePicker from "../components/UserProfileImagePicker";
+import UserProfile from "../models/UserModel";
 
 const Form = t.form.Form;
 
@@ -19,7 +21,40 @@ class CreateProfileForm extends Component<Props> {
   static navigationOptions = {
     title: "Welcome to NoBacco"
   };
+
+  state = {
+    firstName: "New user name",
+    lastName: "New user last name",
+    age: -1,
+    userImage: null,
+    currentProgress: 1
+  };
+
   loginFormRef: ?Object;
+
+  saveProfile = () => {
+    Realm.open({
+      schema: [UserProfile]
+    }).then(realm => {
+      realm.write(() => {
+        const {
+          firstName,
+          lastName,
+          age,
+          userImage,
+          currentProgress
+        } = this.state;
+        realm.create("UserProfile", {
+          firstName,
+          lastName,
+          age,
+          userImage,
+          currentProgress
+        });
+      });
+    });
+  };
+
   render() {
     const { navigate } = this.props.navigation;
     const username = {
@@ -68,6 +103,7 @@ class CreateProfileForm extends Component<Props> {
         />
         <UserProfileImagePicker />
         <Button title="Next" onPress={() => navigate("NextScreen")} />
+        <Button title="Save me" onPress={this.saveProfile} />
       </View>
     );
   }
